@@ -1,28 +1,31 @@
-<div class="grid-cols-2">
+<div class="mx-4 p-6">
   <%= form_with model: article do |form| %>
-    <div>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
+    <div class="mb-4 flex flex-col">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "rounded-md p-1" %>
       <% article.errors.full_messages_for(:title).each do |message| %>
         <div><%= message %></div>
       <% end %>
     </div>
 
-    <div>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %><br>
+    <div class="mb-4 flex flex-col">
+      <%= form.label :body %>
+      <%= form.text_area :body, class: "rounded-md p-1" %>
       <% article.errors.full_messages_for(:body).each do |message| %>
         <div><%= message %></div>
       <% end %>
     </div>
 
-    <div>
+    <div class="mb-4">
       <%= form.label :status %><br>
       <%= form.select :status,['public', 'private', 'archived'], selected: 'public' %>
     </div>
 
+    <div class="mb-4">
+      <button class="p-2 bg-yellow-500 rounded shadow hover:shadow-lg"><%= form.submit %></button>
+    </div>
     <div>
-      <button class="bg-yellow-500 rounded"><%= form.submit %></button>
+      <button class="p-2 bg-yellow-500 rounded shadow hover:shadow-lg"><%= link_to "Home", root_path %></button>
     </div>
   <% end %>
 </div>
